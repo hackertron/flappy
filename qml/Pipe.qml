@@ -8,6 +8,19 @@ EntityBase {
   height: 90
   width: 1
 
+  MovementAnimation {
+    id: movement
+    target: pipe
+    property: "x"
+    minPropertyValue: -80
+    velocity: -120
+    running: true
+    onLimitReached: {
+      pipe.x = 400
+      pipe.y = 30+Math.random()*200
+    }
+  }
+
   Image {
     id: lowerPipe
     source: "../assets/pipe.png"
@@ -24,26 +37,14 @@ EntityBase {
     anchors.horizontalCenter: pipe.horizontalCenter
   }
 
-  MovementAnimation {
-    id: movement
-    target: pipe
-    property: "x"
-    minPropertyValue: -80
-    velocity: -120
-    running: true
-    onLimitReached: {
-      pipe.x = 400
-      pipe.y = 30+Math.random()*200
-    }
-  }
   BoxCollider {
-    anchors.fill: pipe
-    bodyType: Body.Static
-    collisionTestingOnlyMode: true
-    fixture.onBeginContact: {
-      scene.score++
-    }
-  }
+     anchors.fill: pipe
+     bodyType: Body.Static
+     collisionTestingOnlyMode: true
+     fixture.onBeginContact: {
+       scene.score++
+     }
+   }
 
   BoxCollider {
        anchors.fill: lowerPipe
@@ -53,12 +54,13 @@ EntityBase {
          scene.stopGame()
        }
      }
-     BoxCollider {
+
+  BoxCollider {
        anchors.fill: upperPipe
        bodyType: Body.Static
        collisionTestingOnlyMode: true
        fixture.onBeginContact: {
          scene.stopGame()
        }
-     }
+  }
 }
