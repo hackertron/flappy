@@ -19,11 +19,12 @@ EntityBase {
       source: "../assets/land.png"
     }
   }
+
   BoxCollider {
-    anchors.fill: parent
-    bodyType: Body.Static
-    fixture.onBeginContact: {
-      scene.stopGame()
-    }
-  }
+     anchors.fill: parent
+     bodyType: Body.Static
+     fixture.onBeginContact: {
+       scene.stopGame()
+     }
+   }
 }
