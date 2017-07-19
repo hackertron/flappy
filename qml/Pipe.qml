@@ -61,6 +61,7 @@ EntityBase {
        collisionTestingOnlyMode: true
        fixture.onBeginContact: {
          scene.stopGame()
+         
        }
   }
 }
