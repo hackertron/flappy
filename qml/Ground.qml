@@ -25,6 +25,7 @@ EntityBase {
      bodyType: Body.Static
      fixture.onBeginContact: {
        scene.stopGame()
+       
      }
    }
 }
